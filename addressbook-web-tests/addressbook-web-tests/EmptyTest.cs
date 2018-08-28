@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 namespace addressbook_web_tests
 {
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass]
-    public class UnitTest1
+    public class EmptyTest
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -20,12 +20,6 @@ namespace addressbook_web_tests
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void TestMethod1()
         {
-            FirefoxOptions options = new FirefoxOptions();
-            options.BrowserExecutableLocation = @"c:\Program Files\Mozilla Firefox\firefox.exe";
-            options.UseLegacyImplementation = true;
-            driver = new FirefoxDriver(options);
-            baseURL = "http://localhost/";
-            verificationErrors = new StringBuilder();
         }
     }
 }
