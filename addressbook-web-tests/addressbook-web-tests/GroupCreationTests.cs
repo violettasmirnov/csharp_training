@@ -1,7 +1,4 @@
-﻿
-namespace SeleniumTests
-{
-    using System;
+﻿    using System;
     using System.Text;
     using NUnit.Framework;
     using System.Text.RegularExpressions;
@@ -10,8 +7,10 @@ namespace SeleniumTests
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.Support.UI;
 
+namespace WEbAddressbookTests
+{
     [NUnit.Framework.TestFixture]
-    public class AddressBookTests
+    public class GroupCreationTests
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -45,7 +44,7 @@ namespace SeleniumTests
         }
 
         [Test]
-        public void TheUntitledTest()
+        public void GroupCreationTest()
         {
             driver.Navigate().GoToUrl(baseURL + "addressbook/");
             driver.FindElement(By.Name("user")).Clear();
