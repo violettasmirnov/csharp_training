@@ -47,12 +47,12 @@ namespace WEbAddressbookTests
         public void GroupCreationTest()
         {
             OpenHomePage();
-            Login(new AccountData ("admin", "secret");
+            Login(new AccountData ("admin", "secret"));
             GoToGroupPage();
             InitGroupCreation();
             GroupData group = new GroupData("aaa");
-            group.Header = "ddd";
-            group.Footer = "fff";
+            //group.Header = "ddd";
+           // group.Footer = "fff";
             FillGroupForm(group);
             SubmitGroupCreation();
             ReturnToGroupsPage();
