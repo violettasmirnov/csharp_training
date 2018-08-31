@@ -57,7 +57,8 @@ namespace WEbAddressbookTests
             contact.Aday = "12";
             contact.Amonth = "November";
             FillContactForm(contact);
-            SubmitGroupCreation();
+            //SubmitGroupCreation();
+            driver.FindElement(By.XPath("(//input[@name='submit'])[2]")).Click();
         }
         
         private void FillContactForm(ContactData contact)
@@ -110,10 +111,10 @@ namespace WEbAddressbookTests
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
         }
 
-        private void SubmitGroupCreation()
+        /*private void SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
-        }
+        }*/
 
         private void InitContactCreation()
         {
