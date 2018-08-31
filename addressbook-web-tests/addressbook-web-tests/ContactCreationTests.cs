@@ -57,7 +57,7 @@ namespace WEbAddressbookTests
             contact.Aday = "12";
             contact.Amonth = "November";
             FillContactForm(contact);
-            // ERROR: Caught exception [Error: Dom locators are not implemented yet!]
+            SubmitGroupCreation();
         }
         
         private void FillContactForm(ContactData contact)
@@ -108,6 +108,11 @@ namespace WEbAddressbookTests
             driver.FindElement(By.Name("phone2")).SendKeys(contact.Phone2);
             driver.FindElement(By.Name("notes")).Clear();
             driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
+        }
+
+        private void SubmitGroupCreation()
+        {
+            driver.FindElement(By.Name("submit")).Click();
         }
 
         private void InitContactCreation()
