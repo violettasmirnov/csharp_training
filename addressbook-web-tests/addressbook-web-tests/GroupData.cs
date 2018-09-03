@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WEbAddressbookTests
 {
-    class GroupData
+   public class GroupData
     {
         private string name;
         private string header = "" ;
