@@ -9,19 +9,16 @@ namespace WEbAddressbookTests
         [Test]
         public void GroupCreationTest()
         {
-            GoToHomePage();
-            Login(new AccountData ("admin", "secret")); 
-            GoToGroupPage();
-            InitGroupCreation();
-           // Login(new AccountData("admin", "secret"));
-            //InitGroupCreation();
+            app.Navigator.GoToHomePage();
+            app.Auth.Login(new AccountData ("admin", "secret")); 
+            app.Navigator.GoToGroupPage();
+            app.Groups.InitGroupCreation();
             GroupData group = new GroupData("aaa");
             group.Header = "ddd";
             group.Footer = "fff";
-            FillGroupForm(group);
-            SubmitCreation();
-            ReturnToGroupsPage();
-
+            app.Groups.FillGroupForm(group);
+            app.Groups.SubmitCreation();
+            app.Groups.ReturnToGroupsPage();
         }
         
     }
