@@ -13,21 +13,20 @@ namespace WEbAddressbookTests
 {
    public class TestBase
     {
-        protected IWebDriver driver;
+        /*protected IWebDriver driver;
         private StringBuilder verificationErrors;
         protected string baseURL;
         protected LoginHelper loginHelper;
         protected NavigationHelper navigator;
         protected GroupHelper groupHelper;
-        protected ContactHelper contactHelper;
+        protected ContactHelper contactHelper;*/
 
         protected ApplicationManager app;
-
-
+        
         [SetUp]
         public void SetupTest()
         {
-            FirefoxOptions options = new FirefoxOptions();
+            /*FirefoxOptions options = new FirefoxOptions();
             options.BrowserExecutableLocation = @"c:\Program Files\Mozilla Firefox\firefox.exe";
             options.UseLegacyImplementation = true;
             driver = new FirefoxDriver(options);
@@ -37,8 +36,11 @@ namespace WEbAddressbookTests
             loginHelper = new LoginHelper(driver);
             navigator = new NavigationHelper(driver, baseURL);
             groupHelper = new GroupHelper(driver);
-            contactHelper = new ContactHelper(driver);
+            contactHelper = new ContactHelper(driver);*/
+
             app = new ApplicationManager();
+            app.Navigator.GoToHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
         }
 
         [TearDown]
