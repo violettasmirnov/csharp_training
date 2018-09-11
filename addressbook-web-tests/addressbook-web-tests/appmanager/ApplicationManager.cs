@@ -24,13 +24,13 @@ namespace WEbAddressbookTests
             FirefoxOptions options = new FirefoxOptions();
             options.BrowserExecutableLocation = @"c:\Program Files\Mozilla Firefox\firefox.exe";
             options.UseLegacyImplementation = true;
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(options);
             baseURL = "http://localhost";
 
             loginHelper = new LoginHelper(this);
             navigator = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
-            //contactHelper = new ContactHelper(this);
+            contactHelper = new ContactHelper(this);
         }
 
         public IWebDriver Driver
