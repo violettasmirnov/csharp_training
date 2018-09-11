@@ -12,9 +12,30 @@ namespace WEbAddressbookTests
 {
     public class GroupHelper:HelperBase
     {
-        public GroupHelper(IWebDriver driver):base(driver)
+        public GroupHelper(ApplicationManager manager):base(manager)
         {
         }
+               
+        public GroupHelper Create(GroupData group)
+        {
+            manager.Navigator.GoToGroupPage();
+
+            InitGroupCreation();
+            FillGroupForm(group);
+            SubmitCreation();
+            ReturnToGroupsPage();
+            return this;
+        }
+
+        public GroupHelper Remove(int v)
+        {
+            manager.Navigator.GoToGroupPage();
+            SelectGroup(1);
+            RemoveGroup();
+            ReturnToGroupsPage();
+            return this;
+        }
+
         public GroupHelper ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("groups")).Click();

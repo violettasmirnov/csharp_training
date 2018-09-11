@@ -13,9 +13,6 @@ namespace WEbAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            app.Navigator.GoToHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
-            app.Contacts.InitContactCreation();
             ContactData contact = new ContactData ("Sveta", "Storm");
             contact.Middlename = "Von";
             contact.Title = "PhD";
@@ -24,9 +21,24 @@ namespace WEbAddressbookTests
             contact.Bmonth = "November";
             contact.Aday = "12";
             contact.Amonth = "November";
-            app.Contacts.FillContactForm(contact);
-            app.Contacts.SubmitCreation();
-        }      
+
+            app.Contacts.Create(contact);
+        }
+
+        [Test]
+        public void EmptyContactCreationTest()
+        {
+            ContactData contact = new ContactData("", "");
+            contact.Middlename = "";
+            contact.Title = "";
+            contact.Mobile = "";
+            contact.Bday = "11";
+            contact.Bmonth = "November";
+            contact.Aday = "12";
+            contact.Amonth = "November";
+
+            app.Contacts.Create(contact);
+        }
     }
 }
 

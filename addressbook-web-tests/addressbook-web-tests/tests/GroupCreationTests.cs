@@ -8,18 +8,22 @@ namespace WEbAddressbookTests
     {
         [Test]
         public void GroupCreationTest()
-        {
-            app.Navigator.GoToGroupPage();
-            
+        {         
             GroupData group = new GroupData("aaa");
             group.Header = "ddd";
             group.Footer = "fff";
-            app.Groups
-                .InitGroupCreation()
-                .FillGroupForm(group)
-                .SubmitCreation()
-                .ReturnToGroupsPage();
+
+            app.Groups.Create(group);
         }
-        
+
+        [Test]
+        public void EmptyGroupCreationTest()
+        {
+            GroupData group = new GroupData("");
+            group.Header = "";
+            group.Footer = "";
+            
+            app.Groups.Create(group);
+        }
     }
 }
