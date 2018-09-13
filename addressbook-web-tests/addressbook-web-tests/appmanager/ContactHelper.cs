@@ -24,10 +24,10 @@ namespace WEbAddressbookTests
             return this;
         }
         
-        public ContactHelper Modify(int v, ContactData newData)
+        public ContactHelper Modify(int p, ContactData newData)
         {
-            SelectContact(v);
-            InitContactModification();
+            //SelectContact(v);
+            InitContactModification(p);
             FillContactForm(newData);
             SubmitContactModification();
             return this;
@@ -113,9 +113,9 @@ namespace WEbAddressbookTests
             driver.FindElement(By.Name("submit")).Click();
             return this;
         }
-        public ContactHelper InitContactModification()
+        public ContactHelper InitContactModification(int index)
         {
-            driver.FindElement(By.CssSelector("img[alt=\"Edit\"]")).Click();
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
             return this;
         }
         public ContactHelper SubmitContactModification()
