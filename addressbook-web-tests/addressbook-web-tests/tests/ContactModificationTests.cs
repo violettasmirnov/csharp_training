@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace WEbAddressbookTests.tests
+namespace WEbAddressbookTests
 
 {
     [TestFixture]
-    public class ContactModificationTests :TestBase
+    public class ContactModificationTests :AuthTestBase
     {
         [Test]
         public void ContactModificationTest()
