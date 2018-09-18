@@ -15,8 +15,9 @@ namespace WEbAddressbookTests.tests
         {            
             GroupData newData = new GroupData("zzz");
             newData.Header = null;
-            newData.Footer = null;
+            newData.Footer = "ttt";
 
+            app.Groups.CreateIfNeed();
             app.Groups.Modify(1, newData);
         }
     }

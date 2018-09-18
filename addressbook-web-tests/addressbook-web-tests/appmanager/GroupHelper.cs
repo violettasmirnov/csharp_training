@@ -30,7 +30,7 @@ namespace WEbAddressbookTests
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoToGroupPage();
-
+            
             SelectGroup(p);
             InitGroupModification();
             FillGroupForm(newData);
@@ -46,6 +46,17 @@ namespace WEbAddressbookTests
             SelectGroup(p);
             RemoveGroup();
             ReturnToGroupsPage();
+            return this;
+        }
+
+        public GroupHelper CreateIfNeed()
+        {
+            int index=56;
+            if (!IsElementPresent (By.XPath("(//input[@name='selected[]'])[" + index + "]")))
+            {
+                GroupData neu = new GroupData("bbb");
+                Create(neu);
+            }
             return this;
         }
 
@@ -67,9 +78,7 @@ namespace WEbAddressbookTests
             Type(By.Name("group_footer"), group.Footer);
             return this;
         }
-
-        
-
+               
         public GroupHelper SubmitCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
@@ -78,7 +87,7 @@ namespace WEbAddressbookTests
         public GroupHelper SelectGroup(int index)
         {
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();
-            return this;
+            return this; 
         }
         public GroupHelper RemoveGroup()
         {

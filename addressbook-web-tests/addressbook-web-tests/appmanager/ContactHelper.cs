@@ -52,7 +52,10 @@ namespace WEbAddressbookTests
                             
         public ContactHelper FillContactForm(ContactData contact)
         {
-            driver.FindElement(By.Name("firstname")).Clear();
+            Type(By.Name("firstname"), contact.Firstname);
+            Type(By.Name("lastname"), contact.Lastname);
+            
+            /*driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
             driver.FindElement(By.Name("middlename")).Clear();
             driver.FindElement(By.Name("middlename")).SendKeys(contact.Middlename);
@@ -97,10 +100,20 @@ namespace WEbAddressbookTests
             driver.FindElement(By.Name("phone2")).Clear();
             driver.FindElement(By.Name("phone2")).SendKeys(contact.Phone2);
             driver.FindElement(By.Name("notes")).Clear();
-            driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);
+            driver.FindElement(By.Name("notes")).SendKeys(contact.Notes);*/
             return this;
         }
 
+        public ContactHelper CreateIfNeed()
+        {
+            int index = 61;
+            if (!IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
+            {
+                ContactData neu = new ContactData("Ivan","Semenov");
+                Create(neu);
+            }
+            return this;
+        }
         public ContactHelper SelectContact(int index)
         {
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + index + "]")).Click();

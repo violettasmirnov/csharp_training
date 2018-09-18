@@ -15,15 +15,13 @@ namespace WEbAddressbookTests.tests
         public void ContactModificationTest()
         {
             ContactData newData = new ContactData("Ivan", "Sidorov");
-            newData.Middlename = "Petrovych";
-            newData.Title = "";
-            newData.Mobile = "7654321";
             newData.Bday = "10";
             newData.Bmonth = "October";
             newData.Aday = "10";
             newData.Amonth = "December";
 
-            app.Contacts.Modify(7, newData);
+            app.Contacts.CreateIfNeed();
+            app.Contacts.Modify(1, newData);
         }
     }
 }

@@ -10,8 +10,10 @@ namespace WEbAddressbookTests
     public class GroupRemovalTests : AuthTestBase
     {        
         [Test]
+        
         public void GroupRemovalTest()
         {
+            app.Groups.CreateIfNeed();
             app.Groups.Remove(1);          
         }           
     }
