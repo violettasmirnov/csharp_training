@@ -17,7 +17,9 @@ namespace WEbAddressbookTests
         }
                
         public ContactHelper Create(ContactData contact)
-        {            
+        {
+            manager.Navigator.GoToHomePage();
+
             InitContactCreation();
             FillContactForm(contact);
             SubmitCreation();
@@ -26,7 +28,8 @@ namespace WEbAddressbookTests
         
         public ContactHelper Modify(int p, ContactData newData)
         {
-            //SelectContact(v);
+            manager.Navigator.GoToHomePage();
+
             InitContactModification(p);
             FillContactForm(newData);
             SubmitContactModification();
@@ -35,6 +38,8 @@ namespace WEbAddressbookTests
 
         public ContactHelper Remove(int v)
         {
+            manager.Navigator.GoToHomePage();
+
             SelectContact(v);
             RemoveContact();
             return this;
