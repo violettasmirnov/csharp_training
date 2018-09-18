@@ -13,8 +13,8 @@ namespace WEbAddressbookTests
         
         public void GroupRemovalTest()
         {
-            app.Groups.CreateIfNeed();
-            app.Groups.Remove(1);          
+           app.Groups.CreateIfNeed();
+           app.Groups.Remove(1);          
         }           
     }
 }

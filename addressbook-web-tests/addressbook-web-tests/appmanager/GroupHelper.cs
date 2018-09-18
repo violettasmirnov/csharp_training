@@ -51,12 +51,24 @@ namespace WEbAddressbookTests
 
         public GroupHelper CreateIfNeed()
         {
-            int index=56;
-            if (!IsElementPresent (By.XPath("(//input[@name='selected[]'])[" + index + "]")))
+            manager.Navigator.GoToGroupPage();
+
+            IList<IWebElement> elements = 
+                driver.FindElements(By.CssSelector("input"));
+
+            // Now iterate through them and check for our desired match
+            foreach(IWebElement inputElement in elements)
             {
-                GroupData neu = new GroupData("bbb");
-                Create(neu);
+                if (inputElement.GetAttribute("type").Equals("checkbox"))
+                {
+                    // the group is found.
+                    return this;
+                }
             }
+
+            GroupData neu = new GroupData("bbb");
+            Create(neu);
+
             return this;
         }
 
