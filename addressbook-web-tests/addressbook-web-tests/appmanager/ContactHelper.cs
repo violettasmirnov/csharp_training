@@ -106,8 +106,9 @@ namespace WEbAddressbookTests
 
         public ContactHelper CreateIfNeed()
         {
-            int index = 61;
-            if (!IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
+            manager.Navigator.GoToHomePage();
+
+            if (!IsElementPresent(By.TagName("td")))
             {
                 ContactData neu = new ContactData("Ivan","Semenov");
                 Create(neu);
