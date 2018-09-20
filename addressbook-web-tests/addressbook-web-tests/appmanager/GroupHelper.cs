@@ -50,11 +50,11 @@ namespace WEbAddressbookTests
             return this;
         }
 
-        public GroupHelper CreateIfNeed()
+        public GroupHelper CreateIfNeed(int index)
         {
             manager.Navigator.GoToGroupPage();
 
-            if (!IsElementPresent(By.TagName("span")))
+            if (!IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
             {
                 GroupData neu = new GroupData("bbb");
                 Create(neu);

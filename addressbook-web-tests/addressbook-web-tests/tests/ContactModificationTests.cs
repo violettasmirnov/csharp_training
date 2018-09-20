@@ -20,7 +20,7 @@ namespace WEbAddressbookTests.tests
             newData.Aday = "10";
             newData.Amonth = "December";
 
-            app.Contacts.CreateIfNeed();
+            app.Contacts.CreateIfNeed(1);
             app.Contacts.Modify(1, newData);
         }
     }

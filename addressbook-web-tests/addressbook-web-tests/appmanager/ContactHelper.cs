@@ -104,11 +104,11 @@ namespace WEbAddressbookTests
             return this;
         }
 
-        public ContactHelper CreateIfNeed()
+        public ContactHelper CreateIfNeed(int index)
         {
             manager.Navigator.GoToHomePage();
 
-            if (!IsElementPresent(By.TagName("td")))
+            if (!IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + index + "]")))
             {
                 ContactData neu = new ContactData("Ivan","Semenov");
                 Create(neu);
