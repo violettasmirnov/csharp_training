@@ -29,13 +29,13 @@ namespace WEbAddressbookTests
         public void EmptyContactCreationTest()
         {
             ContactData contact = new ContactData("", "");
-            contact.Middlename = "";
+            /*contact.Middlename = "";
             contact.Title = "";
             contact.Mobile = "";
             contact.Bday = "11";
             contact.Bmonth = "November";
             contact.Aday = "12";
-            contact.Amonth = "November";
+            contact.Amonth = "November";*/
 
             app.Contacts.Create(contact);
         }

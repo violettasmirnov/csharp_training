@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using NUnit.Framework;
 
 
 namespace WEbAddressbookTests
@@ -53,25 +54,14 @@ namespace WEbAddressbookTests
         {
             manager.Navigator.GoToGroupPage();
 
-            IList<IWebElement> elements = 
-                driver.FindElements(By.CssSelector("input"));
-
-            // Now iterate through them and check for our desired match
-            foreach(IWebElement inputElement in elements)
+            if (!IsElementPresent(By.TagName("span")))
             {
-                if (inputElement.GetAttribute("type").Equals("checkbox"))
-                {
-                    // the group is found.
-                    return this;
-                }
+                GroupData neu = new GroupData("bbb");
+                Create(neu);
             }
-
-            GroupData neu = new GroupData("bbb");
-            Create(neu);
-
             return this;
-        }
 
+        }
         public GroupHelper ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("groups")).Click();
@@ -117,6 +107,16 @@ namespace WEbAddressbookTests
             driver.FindElement(By.Name("edit")).Click();
             return this;
         }
-
+        public List<GroupData> GetGroupList()
+        {     
+            List<GroupData> groups = new List<GroupData>();
+            manager.Navigator.GoToGroupPage();
+            ICollection <IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+            foreach (IWebElement element in elements)
+            {
+                groups.Add(new GroupData (element.Text));
+            }
+            return groups;
+        }
     }
 }
