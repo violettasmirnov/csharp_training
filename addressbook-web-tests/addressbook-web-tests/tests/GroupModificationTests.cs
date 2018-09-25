@@ -18,7 +18,7 @@ namespace WEbAddressbookTests.tests
             newData.Footer = "ttt";
 
             app.Groups.CreateIfNeed(1);
-            app.Groups.Modify(1, newData);
+            app.Groups.Modify(0, newData);
         }
     }
 }
