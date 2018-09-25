@@ -17,8 +17,16 @@ namespace WEbAddressbookTests.tests
             newData.Header = null;
             newData.Footer = "ttt";
 
-            app.Groups.CreateIfNeed(1);
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+
+            //app.Groups.CreateIfNeed(0);
             app.Groups.Modify(0, newData);
+
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+            oldGroups[0].Name = newData.Name;
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
         }
     }
 }
