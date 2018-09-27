@@ -33,15 +33,11 @@ namespace WEbAddressbookTests
         private string address2 = "";
         private string phone2 = "";
         private string notes = "";
-
-        public ContactData(string lastname)
-        {
-            this.lastname = lastname;
-        }
+       
         public ContactData(string lastname, string firstname)
         {
-            this.firstname = firstname;
             this.lastname = lastname;
+            this.firstname = firstname;
         }
 
         public bool Equals(ContactData other)
@@ -54,7 +50,7 @@ namespace WEbAddressbookTests
             {
                 return true;
             }
-            return Lastname == other.Lastname;
+            return Lastname == other.Lastname && Firstname == other.Firstname;
         }
 
         public override int GetHashCode()
@@ -64,7 +60,7 @@ namespace WEbAddressbookTests
 
         public override string ToString()
         {
-            return "lastname =" + Lastname;
+            return "lastname firstname =" + Lastname + "  " + Firstname;
         }
 
         public int CompareTo(ContactData other)
@@ -73,7 +69,11 @@ namespace WEbAddressbookTests
             {
                 return 1;
             }
-            return Lastname.CompareTo(other.Lastname);
+            if (Lastname.CompareTo(other.Lastname) == 0)
+            {
+                return Firstname.CompareTo(other.Firstname);
+            }
+            else return Lastname.CompareTo(other.Lastname);
         }
 
         public string Firstname

@@ -15,8 +15,7 @@ namespace WEbAddressbookTests.tests
         [Test]
         public void ContactModificationTest()
         {
-            ContactData newData = new ContactData("Sidorov");
-            newData.Firstname = "Sam";
+            ContactData newData = new ContactData("Sidorov","Sam");
             newData.Bday = "10";
             newData.Bmonth = "October";
             newData.Aday = "10";
@@ -24,6 +23,7 @@ namespace WEbAddressbookTests.tests
 
             app.Contacts.CreateIfNeed(0);
             app.Contacts.Modify(0, newData);
+
         }
     }
 }

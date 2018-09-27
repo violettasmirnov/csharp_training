@@ -43,7 +43,8 @@ namespace WEbAddressbookTests
             ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
             foreach (IWebElement element in elements)
             {
-                contacts.Add(new ContactData(element.Text));
+                IList<IWebElement> cells = element.FindElements(By.TagName("td"));
+                contacts.Add(new ContactData(cells[1].Text, cells[2].Text));
             }
             return contacts;
         }
@@ -65,7 +66,7 @@ namespace WEbAddressbookTests
         public ContactHelper FillContactForm(ContactData contact)
         {            
             Type(By.Name("lastname"), contact.Lastname);
-            //Type(By.Name("firstname"), contact.Firstname);
+            Type(By.Name("firstname"), contact.Firstname);
 
             /*driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
@@ -122,7 +123,7 @@ namespace WEbAddressbookTests
 
             if (!IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")))
             {
-                ContactData neu = new ContactData("Semenov");
+                ContactData neu = new ContactData("Semenov","Petr" );
                 Create(neu);
             }
             return this;
