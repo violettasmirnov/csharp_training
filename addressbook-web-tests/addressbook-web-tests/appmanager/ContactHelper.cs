@@ -36,6 +36,18 @@ namespace WEbAddressbookTests
             return this;
         }
 
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigator.GoToHomePage();
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
+            foreach (IWebElement element in elements)
+            {
+                contacts.Add(new ContactData(element.Text));
+            }
+            return contacts;
+        }
+
         public ContactHelper Remove(int v)
         {
             manager.Navigator.GoToHomePage();
@@ -51,10 +63,10 @@ namespace WEbAddressbookTests
         }
                             
         public ContactHelper FillContactForm(ContactData contact)
-        {
-            Type(By.Name("firstname"), contact.Firstname);
+        {            
             Type(By.Name("lastname"), contact.Lastname);
-            
+            //Type(By.Name("firstname"), contact.Firstname);
+
             /*driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
             driver.FindElement(By.Name("middlename")).Clear();
@@ -110,7 +122,7 @@ namespace WEbAddressbookTests
 
             if (!IsElementPresent(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")))
             {
-                ContactData neu = new ContactData("Ivan","Semenov");
+                ContactData neu = new ContactData("Semenov");
                 Create(neu);
             }
             return this;
@@ -134,7 +146,7 @@ namespace WEbAddressbookTests
         }
         public ContactHelper InitContactModification(int index)
         {
-            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + index + "]")).Click();
+            driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + (index +1) + "]")).Click();
             return this;
         }
         public ContactHelper SubmitContactModification()

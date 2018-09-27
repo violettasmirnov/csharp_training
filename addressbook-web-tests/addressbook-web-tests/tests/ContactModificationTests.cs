@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace WEbAddressbookTests.tests
@@ -14,14 +15,15 @@ namespace WEbAddressbookTests.tests
         [Test]
         public void ContactModificationTest()
         {
-            ContactData newData = new ContactData("Ivan", "Sidorov");
+            ContactData newData = new ContactData("Sidorov");
+            newData.Firstname = "Sam";
             newData.Bday = "10";
             newData.Bmonth = "October";
             newData.Aday = "10";
             newData.Amonth = "December";
 
-            app.Contacts.CreateIfNeed(1);
-            app.Contacts.Modify(1, newData);
+            app.Contacts.CreateIfNeed(0);
+            app.Contacts.Modify(0, newData);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace WEbAddressbookTests
@@ -13,7 +14,8 @@ namespace WEbAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            ContactData contact = new ContactData ("Sveta", "Storm");
+            ContactData contact = new ContactData ("Storm");
+            contact.Firstname = "Ivan";
             contact.Middlename = "Von";
             contact.Title = "PhD";
             contact.Mobile = "1234567";
@@ -22,13 +24,22 @@ namespace WEbAddressbookTests
             contact.Aday = "12";
             contact.Amonth = "November";
 
+            List<ContactData> oldcontacts = app.Contacts.GetContactList();
+
             app.Contacts.Create(contact);
+
+            List<ContactData> newcontacts = app.Contacts.GetContactList();
+            oldcontacts.Add(contact);
+            oldcontacts.Sort();
+            newcontacts.Sort();
+
+            Assert.AreEqual(oldcontacts, newcontacts);
         }
 
         [Test]
         public void EmptyContactCreationTest()
         {
-            ContactData contact = new ContactData("", "");
+            ContactData contact = new ContactData("");
             /*contact.Middlename = "";
             contact.Title = "";
             contact.Mobile = "";
@@ -37,7 +48,16 @@ namespace WEbAddressbookTests
             contact.Aday = "12";
             contact.Amonth = "November";*/
 
+            List<ContactData> oldcontacts = app.Contacts.GetContactList();
+
             app.Contacts.Create(contact);
+
+            List<ContactData> newcontacts = app.Contacts.GetContactList();
+            oldcontacts.Add(contact);
+            oldcontacts.Sort();
+            newcontacts.Sort();
+
+            Assert.AreEqual(oldcontacts, newcontacts);
         }
     }
 }
