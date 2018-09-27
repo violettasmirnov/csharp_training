@@ -21,8 +21,18 @@ namespace WEbAddressbookTests.tests
             newData.Aday = "10";
             newData.Amonth = "December";
 
+            List<ContactData> oldcontacts = app.Contacts.GetContactList();
+
             app.Contacts.CreateIfNeed(0);
             app.Contacts.Modify(0, newData);
+
+            List<ContactData> newcontacts = app.Contacts.GetContactList();
+
+            oldcontacts[0].Lastname = newData.Lastname;
+            oldcontacts[0].Firstname = newData.Firstname;
+            oldcontacts.Sort();
+            newcontacts.Sort();
+            Assert.AreEqual(oldcontacts, newcontacts);
 
         }
     }
