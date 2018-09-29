@@ -17,9 +17,10 @@ namespace WEbAddressbookTests.tests
             newData.Header = null;
             newData.Footer = "ttt";
 
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
-
             app.Groups.CreateIfNeed(0);
+
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+                        
             app.Groups.Modify(0, newData);
 
             List<GroupData> newGroups = app.Groups.GetGroupList();

@@ -14,9 +14,10 @@ namespace WEbAddressbookTests
         
         public void GroupRemovalTest()
         {
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            app.Groups.CreateIfNeed(0);
 
-            //app.Groups.CreateIfNeed(0);
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+                       
             app.Groups.Remove(0);
 
             List<GroupData> newGroups = app.Groups.GetGroupList();

@@ -15,6 +15,7 @@ namespace WEbAddressbookTests
         public void ContactCreationTest()
         {
             ContactData contact = new ContactData ("Storm", "Sveta");
+            
             contact.Middlename = "Von";
             contact.Title = "PhD";
             contact.Mobile = "1234567";

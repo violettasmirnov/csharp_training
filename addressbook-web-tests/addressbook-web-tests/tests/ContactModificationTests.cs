@@ -21,9 +21,10 @@ namespace WEbAddressbookTests.tests
             newData.Aday = "10";
             newData.Amonth = "December";
 
-            List<ContactData> oldcontacts = app.Contacts.GetContactList();
-
             app.Contacts.CreateIfNeed(0);
+
+            List<ContactData> oldcontacts = app.Contacts.GetContactList();
+                        
             app.Contacts.Modify(0, newData);
 
             List<ContactData> newcontacts = app.Contacts.GetContactList();

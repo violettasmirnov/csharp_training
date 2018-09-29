@@ -14,7 +14,7 @@ namespace WEbAddressbookTests
         [Test]
         public void ContactRemovalTest()
         {
-            //app.Contacts.CreateIfNeed(0);
+            app.Contacts.CreateIfNeed(0);
 
             List<ContactData> oldContacts = app.Contacts.GetContactList();
 

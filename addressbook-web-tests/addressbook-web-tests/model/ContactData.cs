@@ -39,7 +39,7 @@ namespace WEbAddressbookTests
             this.lastname = lastname;
             this.firstname = firstname;
         }
-
+        
         public bool Equals(ContactData other)
         {
             if (Object.ReferenceEquals(other, null))
