@@ -15,7 +15,7 @@ namespace WEbAddressbookTests
         public ContactHelper(ApplicationManager manager) : base(manager)
         {
         }
-               
+       
         public ContactHelper Create(ContactData contact)
         {
             manager.Navigator.GoToHomePage();
@@ -73,13 +73,13 @@ namespace WEbAddressbookTests
             Type(By.Name("lastname"), contact.Lastname);
             Type(By.Name("firstname"), contact.Firstname);
 
-            /*driver.FindElement(By.Name("firstname")).Clear();
+            driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
             driver.FindElement(By.Name("middlename")).Clear();
             driver.FindElement(By.Name("middlename")).SendKeys(contact.Middlename);
             driver.FindElement(By.Name("lastname")).Clear();
             driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
-            driver.FindElement(By.Name("nickname")).Clear();
+           /* driver.FindElement(By.Name("nickname")).Clear();
             driver.FindElement(By.Name("nickname")).SendKeys(contact.Nickname);
             driver.FindElement(By.Name("photo")).Clear();
             driver.FindElement(By.Name("photo")).SendKeys(contact.Photo);
@@ -93,8 +93,7 @@ namespace WEbAddressbookTests
             driver.FindElement(By.Name("home")).SendKeys(contact.Home);
             driver.FindElement(By.Name("mobile")).Clear();
             driver.FindElement(By.Name("mobile")).SendKeys(contact.Mobile);
-            driver.FindElement(By.Name("work")).Clear();
-            driver.FindElement(By.Name("work")).SendKeys(contact.Work);
+            driver.FindElement(By.Name("work")).Clear();           
             driver.FindElement(By.Name("fax")).Clear();
             driver.FindElement(By.Name("fax")).SendKeys(contact.Fax);
             driver.FindElement(By.Name("email")).Clear();
@@ -157,11 +156,61 @@ namespace WEbAddressbookTests
             driver.FindElement(By.XPath("(//img[@alt='Edit'])[" + (index +1) + "]")).Click();
             return this;
         }
+
+        public void InitContactModyfication(int index)
+        {
+            driver.FindElements(By.Name("entry"))[index]
+               .FindElements(By.TagName("td"))[7]
+               .FindElement(By.TagName("a")).Click();           
+        }
+
         public ContactHelper SubmitContactModification()
         {
             driver.FindElement(By.Name("update")).Click();
             contactCache = null;
             return this;
         }
+        public ContactData GetContactInformationFromTable(int index)
+        {
+            manager.Navigator.GoToHomePage();
+            IList<IWebElement> cells = driver.FindElements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"));
+            string lastName = cells[1].Text;
+            string firstName = cells[2].Text;
+            string address = cells[3].Text;
+            string allPhones = cells[5].Text;
+
+            return new ContactData(firstName, lastName)
+            {
+                Address = address,
+                AllPhones = allPhones
+                
+            };
+        }
+
+        public ContactData GetContactInformationFromEditForm(int index)
+        {
+            
+            manager.Navigator.GoToHomePage();
+            InitContactModyfication(0);
+
+            string firstName = driver.FindElement(By.Name("firstname")).GetAttribute("value");
+            string lastName = driver.FindElement(By.Name("lastname")).GetAttribute("value");
+            string address = driver.FindElement(By.Name("address")).GetAttribute("value");
+
+            string home = driver.FindElement(By.Name("home")).GetAttribute("value");
+            string mobile = driver.FindElement(By.Name("mobile")).GetAttribute("value");
+            string work = driver.FindElement(By.Name("work")).GetAttribute("value");
+
+            return new ContactData(firstName, lastName)
+            {
+                Address = address,
+                Home = home,
+                Mobile = mobile,
+                Work = work
+            };
+
+        }
+
     }
 }

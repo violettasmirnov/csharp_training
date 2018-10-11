@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace WEbAddressbookTests.tests
+namespace WEbAddressbookTests
 
 {
     [TestFixture]

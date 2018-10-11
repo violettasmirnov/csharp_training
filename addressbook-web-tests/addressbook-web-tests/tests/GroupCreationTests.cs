@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 
-namespace WEbAddressbookTests
+/*namespace WEbAddressbookTests
 {
     
 
@@ -73,4 +73,4 @@ namespace WEbAddressbookTests
             Assert.AreEqual(oldGroups, newGroups);
         }
     }
-}
+}*/
